@@ -3,9 +3,13 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AgGridReact } from 'ag-grid-react';
 import { ColDef } from 'ag-grid-community';
+import { ModuleRegistry } from 'ag-grid-community';
+import { ClientSideRowModelModule } from 'ag-grid-community';
+//import { themeBalham } from 'ag-grid-community';
 
-import 'ag-grid-community/styles/ag-grid.css';
-import 'ag-grid-community/styles/ag-theme-alpine.css';
+ModuleRegistry.registerModules([ClientSideRowModelModule]);
+
+//const myTheme = themeBalham.withParams({ accentColor: 'gray' });
 
 const Main: React.FC = () => {
   const navigate = useNavigate();
