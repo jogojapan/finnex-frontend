@@ -8,13 +8,19 @@ import { ClientSideRowModelModule } from 'ag-grid-community';
 
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
-const Main: React.FC = () => {
- const navigate = useNavigate();
+// src/Main.tsx
+interface MainProps {
+ onLogout: () => void;
+}
 
- const handleLogout = () => {
- localStorage.removeItem('token');
- navigate('/login');
- };
+const Main: React.FC<MainProps> = ({ onLogout }) => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    onLogout();
+    localStorage.removeItem('token');
+    navigate('/login');
+  };
 
  const columnDefs: ColDef[] = [
  { field: 'column1' as const, headerName: 'Column1' },

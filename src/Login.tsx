@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 interface LoginProps {
-  onLoginSuccess: () => void;
+  onLoginSuccess: (token: string) => void;
 }
 
 async function login(username: string, password: string): Promise<string | null> {
@@ -29,7 +29,7 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
         console.log('Obtained token:', token);
         setMsg('Obtained token:' + token);
         localStorage.setItem('token', token);
-        onLoginSuccess();
+        onLoginSuccess(token);
       } else {
         console.log('Login failed. Invalid username or password.');
         setError('Login failed. Invalid username or password.');
