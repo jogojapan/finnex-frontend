@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './Login';
 import Main from './Main';
 import NewAccount from './NewAccount';
+import AccountList from './AccountList';
 
 const App: React.FC = () => {
  const [token, setToken] = useState(localStorage.getItem('token'));
@@ -43,6 +44,7 @@ const App: React.FC = () => {
  element={token ? <Main onLogout={handleLogout} /> : <Navigate to="/login" replace />}
  />
  <Route path='/accounts/new' element={token ? <NewAccount /> : <Navigate to="/login" replace />} />
+ <Route path='/accounts/list' element={token ? <AccountList /> : <Navigate to="/login" replace />} />
  </Routes>
  </BrowserRouter>
  );

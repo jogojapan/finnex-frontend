@@ -42,7 +42,7 @@ const Main: React.FC<MainProps> = ({ onLogout }) => {
  <Link to="#">User</Link>
  </li>
  <li>
- <Link to="#">Accounts</Link>
+ <Link to="/accounts/list">Accounts</Link>
  </li>
  <li>
  <Link to="/accounts/new">Create Account</Link>
