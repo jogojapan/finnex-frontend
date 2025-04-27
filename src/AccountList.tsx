@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import useTheme from './useTheme';
 import { AgGridReact } from 'ag-grid-react';
-import 'ag-grid-community/styles/ag-grid.css';
-import 'ag-grid-community/styles/ag-theme-alpine.css';
 import { ColDef } from 'ag-grid-community';
 
 interface Account {
@@ -28,6 +27,8 @@ const AccountList: React.FC = () => {
     { field: 'current_balance', headerName: 'Current Balance' },
   ]);
 
+  const { agTheme } = useTheme();
+
   useEffect(() => {
     const fetchAccounts = async () => {
       try {
@@ -41,12 +42,13 @@ const AccountList: React.FC = () => {
   }, []);
 
   return (
-    <div className="ag-theme-alpine" style={{ height: '500px', width: '100%' }}>
+    <div style={{ height: '100%', width: '100%' }}>
       <AgGridReact
         rowData={accounts}
         columnDefs={columnDefs}
         pagination={true}
         paginationAutoPageSize={true}
+        theme={agTheme}
       />
     </div>
   );

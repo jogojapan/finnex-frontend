@@ -6,6 +6,7 @@ import Main from './Main';
 import NewAccount from './NewAccount';
 import AccountList from './AccountList';
 import Layout from './Layout';
+import { ThemeProvider } from './ThemeContext';
 
 const App: React.FC = () => {
  const [token, setToken] = useState(localStorage.getItem('token'));
@@ -27,25 +28,27 @@ const App: React.FC = () => {
     setToken(null);
   };
 
- return (
-   <BrowserRouter>
-     <Routes>
-     <Route element={<Layout />}>
-       <Route path="/login" element={
-         token ? (
-           <Navigate to="/" replace />
-         ) : (
-           <Login onLoginSuccess={handleLoginSuccess} />
-         )
-       }/>
-       <Route path="/" element={
-         token ? <Main onLogout={handleLogout} /> : <Navigate to="/login" replace />
-       }/>
-       <Route path='/accounts/new' element={token ? <NewAccount /> : <Navigate to="/login" replace />} />
-       <Route path='/accounts/list' element={token ? <AccountList /> : <Navigate to="/login" replace />} />
-     </Route>
-     </Routes>
-   </BrowserRouter>
+  return (
+    <ThemeProvider>
+      <BrowserRouter>
+      <Routes>
+      <Route element={<Layout />}>
+        <Route path="/login" element={
+           token ? (
+             <Navigate to="/" replace />
+           ) : (
+             <Login onLoginSuccess={handleLoginSuccess} />
+           )
+        }/>
+        <Route path="/" element={
+          token ? <Main onLogout={handleLogout} /> : <Navigate to="/login" replace />
+        }/>
+        <Route path='/accounts/new' element={token ? <NewAccount /> : <Navigate to="/login" replace />} />
+        <Route path='/accounts/list' element={token ? <AccountList /> : <Navigate to="/login" replace />} />
+      </Route>
+      </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
  );
 };
 
