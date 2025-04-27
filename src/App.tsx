@@ -32,7 +32,7 @@ const App: React.FC = () => {
     <ThemeProvider>
       <BrowserRouter>
       <Routes>
-      <Route element={<Layout />}>
+      <Route element={<Layout onLogout={handleLogout} />}>
         <Route path="/login" element={
            token ? (
              <Navigate to="/" replace />

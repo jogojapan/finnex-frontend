@@ -2,10 +2,14 @@
 import React from 'react';
 import './Layout.css';
 import useTheme from './useTheme';
-//import Menu from './Menu';
+import Menu from './Menu';
 import { Outlet } from 'react-router-dom';
 
-const Layout: React.FC = () => {
+interface LayoutProps {
+  onLogout: () => void;
+}
+
+const Layout: React.FC<LayoutProps> = ({ onLogout }) => {
   const version = '0.0.1';
   const { toggleTheme } = useTheme();
 
@@ -26,12 +30,14 @@ const Layout: React.FC = () => {
         </div>
       </div>
       <div className="main-area">
-        <div className="menu-bar">Menu</div>
+        <div className="menu-bar">
+          <Menu onLogout={onLogout}/>
+        </div>
         <div className="main-content">
           <Outlet />
         </div>
       </div>
-      <div className="status-bar">Status</div>
+      <div className="input-bar">Input</div>
     </div>
   );
 };

@@ -62,7 +62,7 @@
   background-color: var(--primary-background-color);
   color: var(--primary-text-color);
   padding: 10px;
-  width: 200px;
+  width: 8%;
 }
 
 .main-content {
@@ -71,9 +71,10 @@
   overflow-y: auto;
 }
 
-.status-bar {
+.input-bar {
   background-color: var(--primary-background-color);
   color: var(--primary-text-color);
   padding: 10px;
   text-align: center;
+  height: 15%;
 }
